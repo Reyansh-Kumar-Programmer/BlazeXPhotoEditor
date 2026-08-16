@@ -1,0 +1,164 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 4%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 4%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 4%;
+    --primary: 240 10% 4%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 45%;
+    --accent: 240 4.8% 93%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 89%;
+    --input: 240 5.9% 89%;
+    --ring: 240 10% 4%;
+    --radius: 0.375rem;
+
+    /* Editor specific */
+    --editor-bg: #ffffff;
+    --editor-fg: #09090b;
+    --editor-panel: #ffffff;
+    --editor-panel-hover: #f5f5f5;
+    --editor-border: #e5e5e5;
+    --editor-border-subtle: #f0f0f0;
+    --editor-muted: #737373;
+    --editor-canvas: #f5f5f4;
+    --editor-canvas-dot: rgba(0, 0, 0, 0.06);
+    --editor-active: #09090b;
+    --editor-active-fg: #ffffff;
+    --editor-scrollbar-track: #f8fafc;
+    --editor-scrollbar-thumb: #cbd5e1;
+    --editor-scrollbar-thumb-hover: #94a3b8;
+    --editor-slider-track: #e5e5e5;
+    --editor-slider-thumb: #09090b;
+    --editor-slider-thumb-hover: #262626;
+  }
+}
+
+/* ========== DARK MODE ========== */
+[data-theme="dark"] {
+  --background: 220 13% 7%;
+  --foreground: 210 20% 98%;
+  --card: 220 12% 10%;
+  --card-foreground: 210 20% 98%;
+  --popover: 220 12% 10%;
+  --popover-foreground: 210 20% 98%;
+  --primary: 210 20% 98%;
+  --primary-foreground: 220 13% 7%;
+  --secondary: 220 10% 14%;
+  --secondary-foreground: 210 20% 98%;
+  --muted: 220 10% 14%;
+  --muted-foreground: 218 11% 55%;
+  --accent: 220 10% 16%;
+  --accent-foreground: 210 20% 98%;
+  --destructive: 0 62.8% 45%;
+  --destructive-foreground: 210 20% 98%;
+  --border: 220 10% 16%;
+  --input: 220 10% 16%;
+  --ring: 212 96% 64%;
+
+  --editor-bg: #0d0e12;
+  --editor-fg: #e5e5e5;
+  --editor-panel: #141519;
+  --editor-panel-hover: #1c1d24;
+  --editor-border: #252630;
+  --editor-border-subtle: #1e1f28;
+  --editor-muted: #737373;
+  --editor-canvas: #111215;
+  --editor-canvas-dot: rgba(255, 255, 255, 0.03);
+  --editor-active: #ffffff;
+  --editor-active-fg: #09090b;
+  --editor-scrollbar-track: #111215;
+  --editor-scrollbar-thumb: #2a2b35;
+  --editor-scrollbar-thumb-hover: #3a3b48;
+  --editor-slider-track: #2a2b35;
+  --editor-slider-thumb: #ffffff;
+  --editor-slider-thumb-hover: #d4d4d4;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+}
+
+/* Scrollbars */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: var(--editor-scrollbar-track); }
+::-webkit-scrollbar-thumb { background: var(--editor-scrollbar-thumb); border-radius: 2.5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--editor-scrollbar-thumb-hover); }
+
+/* Dot grid background for canvas workspace */
+.studio-grid-bg {
+  background-image: radial-gradient(var(--editor-canvas-dot) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Range Slider Styles */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  height: 16px;
+}
+input[type="range"]:focus { outline: none; }
+input[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 3px;
+  background: var(--editor-slider-track);
+  border-radius: 1.5px;
+}
+input[type="range"]::-webkit-slider-thumb {
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  background: var(--editor-slider-thumb);
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -5.5px;
+  box-shadow: 0 0 0 2px var(--editor-panel), 0 1px 4px rgba(0, 0, 0, 0.25);
+  transition: transform 0.1s ease, box-shadow 0.15s ease;
+}
+input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.2);
+  background: var(--editor-slider-thumb-hover);
+  box-shadow: 0 0 0 2px var(--editor-panel), 0 1px 6px rgba(0, 0, 0, 0.35);
+}
+input[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 3px;
+  background: var(--editor-slider-track);
+  border-radius: 1.5px;
+}
+input[type="range"]::-moz-range-thumb {
+  height: 14px;
+  width: 14px;
+  border: none;
+  border-radius: 50%;
+  background: var(--editor-slider-thumb);
+  cursor: pointer;
+  box-shadow: 0 0 0 2px var(--editor-panel), 0 1px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Fade-in animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in { animation: fadeIn 0.2s ease-out; }
